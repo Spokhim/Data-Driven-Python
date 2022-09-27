@@ -394,12 +394,14 @@ def propagate_metrics(N_syn, N_states, N_inputs, A, B, C, P_0p, xi_0p, varsigma,
     y_fast = np.array([0.033765242898424, 0.169395306766868, 0.380690406958402, 0.966234757101576, 0.830604693233132, 0.619309593041599])
 
     CPC = np.matmul(np.matmul(C[z_indexes, :], P_0p) , np.transpose(C[z_indexes, :])) # CPC' # Consider adding np.newaxis as in Bxi line
+    print(CPC)
     dCPC = np.diag(CPC)
     dCPB = np.diag(np.matmul(np.matmul(C[z_indexes, :], P_0p) , np.transpose(B[z_indexes, :]))) #diagonal of CPB'
     Bxi = np.matmul(B[z_indexes[:, np.newaxis], alpha_indexes[np.newaxis,:]], xi_0p[alpha_indexes])
     AP = np.matmul(A, P_0p)
     
     # Analytic mean
+    print(dCPC)
     gamma = np.divide(1,np.sqrt(2*(dCPC + varsigma**2))) # gamma = np.divide(1,np.sqrt(abs(2*(dCPC + varsigma**2)))) #
     beta = (np.matmul(C[z_indexes[:, np.newaxis], v_indexes[np.newaxis, :]], xi_0p[v_indexes]) - v0) * gamma
     Xi = np.zeros(beta.shape)

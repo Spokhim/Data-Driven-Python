@@ -6,7 +6,7 @@ Created on Fri Aug  7 13:30:58 2020
 """
 
 import numpy as np
-import nmm
+# import nmm  #hacky way of importing
 
 # Bayesian Cramer-Rao Lower Bound
 def compute_pcrb(t, f, F, H, Q, R, m0, P0, M):
